@@ -14,6 +14,7 @@ namespace Catalog.Application.Mappers
             var mapper = config.CreateMapper();
             return mapper;
         });
+
         public static IMapper Mapper => Lazy.Value;
     }
 }
