@@ -32,9 +32,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(_ => _.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog.API v1"));
 }
 
-app.UseHttpsRedirection();
-
+//app.UseHttpsRedirection();
+app.UseRouting();
 app.UseAuthorization();
+
 app.UseEndpoints(_ =>
 {
     _.MapControllers();
@@ -44,6 +45,6 @@ app.UseEndpoints(_ =>
         ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
     });
 });
-app.MapControllers();
 
+//app.MapControllers();
 app.Run();

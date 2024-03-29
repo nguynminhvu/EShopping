@@ -18,6 +18,7 @@ C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Co
 C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Core\obj\Debug\net6.0\Catalog.Core.AssemblyInfoInputs.cache
 C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Core\obj\Debug\net6.0\Catalog.Core.AssemblyInfo.cs
 C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Core\obj\Debug\net6.0\Catalog.Core.csproj.CoreCompileInputs.cache
+C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Core\obj\Debug\net6.0\Catalog.Core.sourcelink.json
 C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Core\obj\Debug\net6.0\Catalog.Core.dll
 C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Core\obj\Debug\net6.0\refint\Catalog.Core.dll
 C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Core\obj\Debug\net6.0\Catalog.Core.pdb

@@ -33,6 +33,7 @@ C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.In
 C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Infrastructure\obj\Debug\net6.0\Catalog.Infrastructure.AssemblyInfoInputs.cache
 C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Infrastructure\obj\Debug\net6.0\Catalog.Infrastructure.AssemblyInfo.cs
 C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Infrastructure\obj\Debug\net6.0\Catalog.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Infrastructure\obj\Debug\net6.0\Catalog.Infrastructure.sourcelink.json
 C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Infrastructure\obj\Debug\net6.0\Catalog.Infrastructure.csproj.CopyComplete
 C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Infrastructure\obj\Debug\net6.0\Catalog.Infrastructure.dll
 C:\Users\ACER\Desktop\General\C#\EShopping\EShopping\Services\Catalog\Catalog.Infrastructure\obj\Debug\net6.0\refint\Catalog.Infrastructure.dll
