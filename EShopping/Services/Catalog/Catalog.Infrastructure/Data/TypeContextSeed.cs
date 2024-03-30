@@ -16,8 +16,13 @@ namespace Catalog.Infrastructure.Data
             bool checkType = await (await mongoCollection.FindAsync(x => true)).AnyAsync();
             if (!checkType)
             {
-                var path = Path.Combine("Data", "SeedData", "types.json");
-                var typesData = File.ReadAllText(path);
+                string path = Path.Combine("Catalog.Infrastructure\\Data", "SeedData", "types.json");
+                path += "\\types.json";
+
+                // i don't no why i get current path contain "Catalog.API"??
+                // seed data 1 time, hard code a little bit
+
+                var typesData = File.ReadAllText("C:\\Users\\ACER\\Desktop\\General\\C#\\EShopping\\EShopping\\Services\\Catalog\\Catalog.Infrastructure\\Data\\SeedData\\types.json");
                 var types = JsonSerializer.Deserialize<List<ProductType>>(typesData);
                 if (types != null)
                 {

@@ -9,9 +9,6 @@ namespace Catalog.Core.Entities
 {
     public class Product : BaseEntity
     {
-        [BsonId]
-        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public string Id { get; set; }
 
         [BsonElement("Name")]
         public string Name { get; set; }

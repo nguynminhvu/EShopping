@@ -807,7 +807,6 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "Catalog.Application": "1.0.0",
-          "Catalog.Core": "1.0.0",
           "Microsoft.Extensions.Configuration.Binder": "8.0.1"
         },
         "compile": {

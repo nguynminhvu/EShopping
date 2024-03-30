@@ -1658,7 +1658,6 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Catalog.Application >= 1.0.0",
-      "Catalog.Core >= 1.0.0",
       "Microsoft.Extensions.Configuration.Binder >= 8.0.1"
     ]
   },
@@ -1696,9 +1695,6 @@
           "projectReferences": {
             "C:\\Users\\ACER\\Desktop\\General\\C#\\EShopping\\EShopping\\Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj": {
               "projectPath": "C:\\Users\\ACER\\Desktop\\General\\C#\\EShopping\\EShopping\\Services\\Catalog\\Catalog.Application\\Catalog.Application.csproj"
-            },
-            "C:\\Users\\ACER\\Desktop\\General\\C#\\EShopping\\EShopping\\Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj": {
-              "projectPath": "C:\\Users\\ACER\\Desktop\\General\\C#\\EShopping\\EShopping\\Services\\Catalog\\Catalog.Core\\Catalog.Core.csproj"
             }
           }
         }
