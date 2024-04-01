@@ -22,7 +22,7 @@ namespace Catalog.Infrastructure.Data
                 // i don't no why i get current path contain "Catalog.API"??
                 // seed data 1 time, hard code a little bit
 
-                var productData = File.ReadAllText("C:\\Users\\ACER\\Desktop\\General\\C#\\EShopping\\EShopping\\Services\\Catalog\\Catalog.Infrastructure\\Data\\SeedData\\products.json");
+                var productData = File.ReadAllText("Data/SeedData/products.json");
                 var products = JsonSerializer.Deserialize<List<Product>>(productData);
                 if (products != null)
                 {

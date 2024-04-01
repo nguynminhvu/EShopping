@@ -2,7 +2,6 @@ using Basket.Application;
 using Basket.Core.Repositories;
 using Basket.Infrastructure.Repositories;
 using HealthChecks.UI.Client;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +14,7 @@ builder.Services.AddStackExchangeRedisCache(x =>
 {
     x.Configuration = builder.Configuration.GetValue<string>("CacheSettings:ConnectionString");
 });
+
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddSwaggerGen(x =>
@@ -25,29 +25,37 @@ builder.Services.AddSwaggerGen(x =>
         Version = "v1"
     });
 });
-builder.Services.AddHealthChecks().AddRedis(builder.Configuration["CacheSettings:ConnectionString"] + "", "Redis Health", Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded);
+
+builder.Services.AddHealthChecks()
+    .AddRedis(
+    builder.Configuration["CacheSettings:ConnectionString"] + "", "Redis Health",
+    Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded
+    );
 var app = builder.Build();
+
+// Configure the HTTP request pipeline. 
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    app.UseSwaggerUI(x => x.SwaggerEndpoint("/swagger/v1/swagger.json", "Basket.API v1"));
+    app.UseSwaggerUI(x =>
+    {
+        x.SwaggerEndpoint("/swagger/v1/swagger.json", "Basket.API v1");
+    });
 }
-// Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
 app.UseRouting();
-app.UseAuthentication();
 app.UseAuthorization();
-
-app.UseEndpoints(x =>
+app.UseEndpoints(_ =>
 {
-    x.MapControllers();
-    x.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
+    _.MapControllers();
+    _.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
     {
         Predicate = _ => true,
         ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
     });
 });
+//app.MapControllers();
 
 app.Run();
