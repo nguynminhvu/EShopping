@@ -8,13 +8,17 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Catalog.API/Catalog.API.csproj", "Catalog.API/"]
-COPY ["Catalog.Application/Catalog.Application.csproj", "Catalog.Application/"]
-COPY ["Catalog.Core/Catalog.Core.csproj", " Catalog.Core/"]
-COPY ["Catalog.Infrastructure/Catalog.Infrastructure.csproj", "Catalog.Infrastructure/"]
-RUN dotnet restore "Catalog.API/Catalog.API.csproj"
+COPY ["Catalog/Catalog.API/Catalog.API.csproj", "Catalog/Catalog.API/"]
+COPY ["Catalog/Catalog.Application/Catalog.Application.csproj", "Catalog/Catalog.Application/"]
+COPY ["Catalog/Catalog.Core/Catalog.Core.csproj", "Catalog/Catalog.Core/"]
+COPY ["Catalog/Catalog.Infrastructure/Catalog.Infrastructure.csproj", "Catalog/Catalog.Infrastructure/"]
+RUN dotnet restore "Catalog/Catalog.API/Catalog.API.csproj"
 COPY . .
-WORKDIR "/src/Catalog.API"
+COPY Catalog/Catalog.Infrastructure/Data/SeedData/products.json /app/Catalog/Catalog.Infrastructure/Data/SeedData/products.json
+COPY Catalog/Catalog.Infrastructure/Data/SeedData/brands.json /app/Catalog/Catalog.Infrastructure/Data/SeedData/brands.json
+COPY Catalog/Catalog.Infrastructure/Data/SeedData/types.json /app/Catalog/Catalog.Infrastructure/Data/SeedData/types.json
+
+WORKDIR "/src/Catalog/Catalog.API"
 RUN dotnet build "./Catalog.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

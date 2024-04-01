@@ -27,6 +27,8 @@ namespace Catalog.Infrastructure.Data
             //get object database from MongoClient
             var database = client.GetDatabase(configuration.GetValue<string>("DatabaseSettings:DatabaseName"));
 
+            Console.WriteLine($"connection string nek: {configuration.GetValue<string>("DatabaseSettings:ConnectionString")}");
+
             Products = database.GetCollection<Product>("DatabaseSettings:CollectionName");
             Brands = database.GetCollection<ProductBrand>("DatabaseSetting:BrandsCollection");
             Types = database.GetCollection<ProductType>("DatabaseSettings:TypesCollection");
