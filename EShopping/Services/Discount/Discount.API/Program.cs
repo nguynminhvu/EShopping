@@ -3,6 +3,7 @@ using Discount.Application;
 using Discount.Application.Mappers;
 using Discount.Core.Repositories;
 using Discount.Infrastructure.Repositories;
+using Discount.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +14,9 @@ builder.Services.AddMediatR(x => x.RegisterServicesFromAssembly(typeof(AddMediat
 builder.Services.AddAutoMapper(typeof(DiscountProfile));
 builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
 builder.Services.AddGrpc();
-
 var app = builder.Build();
 
+app.MigrateDatabases<Program>();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
