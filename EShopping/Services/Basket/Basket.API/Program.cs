@@ -1,6 +1,7 @@
 using Basket.Application;
 using Basket.Core.Repositories;
 using Basket.Infrastructure.Repositories;
+using Discount.Grpc.Protos;
 using HealthChecks.UI.Client;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +15,7 @@ builder.Services.AddStackExchangeRedisCache(x =>
 {
     x.Configuration = builder.Configuration.GetValue<string>("CacheSettings:ConnectionString");
 });
-
+builder.Services.AddScoped<Basket.Application.gRPCServices.DiscountProtoService>();
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddSwaggerGen(x =>
@@ -25,7 +26,7 @@ builder.Services.AddSwaggerGen(x =>
         Version = "v1"
     });
 });
-
+builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(x=>x.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]) );
 builder.Services.AddHealthChecks()
     .AddRedis(
     builder.Configuration["CacheSettings:ConnectionString"] + "", "Redis Health",
