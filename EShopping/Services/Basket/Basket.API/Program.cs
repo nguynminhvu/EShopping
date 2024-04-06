@@ -27,6 +27,7 @@ builder.Services.AddSwaggerGen(x =>
     });
 });
 builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(x=>x.Address = new Uri(builder.Configuration["GrpcSettings:DiscountUrl"]) );
+Console.WriteLine($"Url grpc nek: {builder.Configuration["GrpcSettings:DiscountUrl"]}");
 builder.Services.AddHealthChecks()
     .AddRedis(
     builder.Configuration["CacheSettings:ConnectionString"] + "", "Redis Health",
