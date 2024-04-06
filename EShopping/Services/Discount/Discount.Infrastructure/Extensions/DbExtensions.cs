@@ -32,7 +32,7 @@ namespace Discount.Infrastructure.Extensions
         }
 
         private static void ApplyMigration(IConfiguration config)
-        {
+         {
             using (var connection = new NpgsqlConnection(config.GetValue<string>("DatabaseSettings:ConnectionString")))
             {
                 connection.Open();
