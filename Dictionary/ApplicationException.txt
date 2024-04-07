@@ -1,0 +1,21 @@
+Trong .NET Framework, ApplicationException là một lớp cơ sở được cung cấp sẵn để tạo ra các lớp exception tùy chỉnh trong ứng dụng của bạn. Dưới đây là một số điểm cần biết về ApplicationException:
+
+Lớp Cơ Sở Cho Các Exception Tùy Chỉnh: ApplicationException được thiết kế để là lớp cơ sở cho các exception tùy chỉnh mà bạn muốn định nghĩa trong ứng dụng của mình. Bằng cách kế thừa từ ApplicationException, bạn có thể tạo ra các lớp exception riêng của mình với các thuộc tính và hành vi phù hợp.
+
+Không Có Mục Đích Cụ Thể: Trong các phiên bản .NET Framework trước, ApplicationException được giả định là lớp cơ sở cho tất cả các exception được tạo ra bởi ứng dụng. Tuy nhiên, trong thực tế, ApplicationException không chứa bất kỳ logic hoặc dữ liệu nào đặc biệt. Điều này có nghĩa là bạn có thể kế thừa trực tiếp từ Exception (lớp cơ sở cho tất cả các exception trong .NET) mà không cần phải kế thừa từ ApplicationException.
+
+Không Sử Dụng Rộng Rãi Trong Các Phiên Bản Mới: Trong các phiên bản .NET Framework mới hơn, nhất là từ .NET Framework 2.0 trở đi, không khuyến khích sử dụng ApplicationException làm lớp cơ sở cho các exception tùy chỉnh. Thay vào đó, bạn nên kế thừa trực tiếp từ Exception.
+
+Lưu Ý Về Sự Phù Hợp: Nếu bạn đang phát triển ứng dụng trong một môi trường cũ hơn hoặc nếu các quy định trong dự án của bạn yêu cầu việc sử dụng ApplicationException, hãy tiếp tục sử dụng nó. Tuy nhiên, nếu bạn đang làm việc trong một dự án mới hoặc môi trường .NET Core/.NET 5+ mới hơn, hãy xem xét việc kế thừa trực tiếp từ Exception thay vì ApplicationException.
+
+
+
+Khi phát triển các exception tùy chỉnh trong ứng dụng .NET, thường khuyến khích kế thừa trực tiếp từ lớp cơ sở Exception thay vì từ ApplicationException. Dưới đây là một số lý do cho quyết định này:
+
+Thừa Kế Từ Exception Đủ Để Đáp Ứng Nhu Cầu: Lớp Exception là lớp cơ sở cho tất cả các loại exception trong .NET. Nó chứa tất cả các thông tin cần thiết để mô tả một exception, bao gồm thông điệp lỗi, inner exception (nếu có), stack trace, và nhiều thông tin khác. Kế thừa trực tiếp từ Exception đảm bảo rằng các exception tùy chỉnh của bạn có tất cả các tính năng và thông tin cần thiết.
+
+Giảm Sự Phức Tạp: Kế thừa trực tiếp từ Exception giúp giảm sự phức tạp trong ứng dụng của bạn. Trong khi kế thừa từ ApplicationException, bạn có thể cần phải xử lý một lớp trung gian không cần thiết, và điều này có thể làm tăng sự phức tạp của mã của bạn mà không đem lại bất kỳ lợi ích nào cụ thể.
+
+Phù Hợp Với Tiêu Chuẩn: Thực tế là trong nhiều dự án và tiêu chuẩn phát triển, khuyến nghị hiện nay là nên kế thừa trực tiếp từ Exception. Sử dụng ApplicationException không được coi là một phong cách phát triển tiêu biểu trong .NET nữa.
+
+Sự Linh Hoạt Trong Tương Lai: Sử dụng Exception làm lớp cơ sở cho các exception tùy chỉnh của bạn làm cho mã của bạn linh hoạt hơn trong tương lai. Nếu có bất kỳ thay đổi nào trong quản lý exception trong .NET, mã của bạn không cần phải thay đổi. Điều này làm cho mã của bạn dễ bảo trì hơn và giảm thiểu rủi ro của việc giữ mã không đồng bộ với các tiêu chuẩn mới.
