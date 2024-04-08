@@ -8,17 +8,17 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Service/Catalog/Catalog.API/Catalog.API.csproj", "Service/Catalog/Catalog.API/"]
-COPY ["Service/Catalog/Catalog.Application/Catalog.Application.csproj", "Service/Catalog/Catalog.Application/"]
-COPY ["Service/Catalog/Catalog.Core/Catalog.Core.csproj", "Service/Catalog/Catalog.Core/"]
-COPY ["Service/Catalog/Catalog.Infrastructure/Catalog.Infrastructure.csproj", "Service/Catalog/Catalog.Infrastructure/"]
-RUN dotnet restore "Service/Catalog/Catalog.API/Catalog.API.csproj"
+COPY ["Services/Catalog/Catalog.API/Catalog.API.csproj", "Services/Catalog/Catalog.API/"]
+COPY ["Services/Catalog/Catalog.Application/Catalog.Application.csproj", "Services/Catalog/Catalog.Application/"]
+COPY ["Services/Catalog/Catalog.Core/Catalog.Core.csproj", "Services/Catalog/Catalog.Core/"]
+COPY ["Services/Catalog/Catalog.Infrastructure/Catalog.Infrastructure.csproj", "Services/Catalog/Catalog.Infrastructure/"]
+RUN dotnet restore "Services/Catalog/Catalog.API/Catalog.API.csproj"
 COPY . .
-COPY Service/Catalog/Catalog.Infrastructure/Data/SeedData/products.json /app/Catalog/Catalog.Infrastructure/Data/SeedData/products.json
-COPY Service/Catalog/Catalog.Infrastructure/Data/SeedData/brands.json /app/Catalog/Catalog.Infrastructure/Data/SeedData/brands.json
-COPY Service/Catalog/Catalog.Infrastructure/Data/SeedData/types.json /app/Catalog/Catalog.Infrastructure/Data/SeedData/types.json
+COPY Services/Catalog/Catalog.Infrastructure/Data/SeedData/products.json /app/Catalog/Catalog.Infrastructure/Data/SeedData/products.json
+COPY Services/Catalog/Catalog.Infrastructure/Data/SeedData/brands.json /app/Catalog/Catalog.Infrastructure/Data/SeedData/brands.json
+COPY Services/Catalog/Catalog.Infrastructure/Data/SeedData/types.json /app/Catalog/Catalog.Infrastructure/Data/SeedData/types.json
 
-WORKDIR "/src/Service/Catalog/Catalog.API"
+WORKDIR "/src/Services/Catalog/Catalog.API"
 RUN dotnet build "./Catalog.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
