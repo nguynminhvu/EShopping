@@ -25,6 +25,14 @@ services:
     volumes:
       - pgadmin_data:/root/.pgadmin
 
+  orderdb:
+    container_name: orderdb
+    environment:
+      ACCEPT_EULA: "Y"
+    restart: always
+    ports:
+      - "1433:1433"
+
   portainer:
     container_name: portainer
     restart: always
